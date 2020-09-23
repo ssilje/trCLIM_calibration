@@ -1,0 +1,67 @@
+ &IOCTL
+  l_ke_in_gds=.TRUE.,
+  yform_read = 'ncdf',
+  nhour_restart = 87672,87672,720,
+  ydir_restart_out = './restart',
+  ydir_restart_in = './restart',
+  ytunit_restart = 'd',
+  ngribout = 2,
+  yncglob_institution="Institute for Atmospheric and Climate Science, ETH Zurich
+, Switzerland",
+  yncglob_title = "reference run calibration cosmo-gpu over Europe",
+  yncglob_source = "control",
+  yncglob_project_id = "CORDEX-EU 0.44 ",
+  yncglob_experiment_id =" ERA-I (aerocom) ",
+  ncglob_realization = 1,
+  yncglob_contact = "Silje Soerland (silje.soerland@env.ethz.ch)"
+  lbdclim = .TRUE.,
+ /END
+ &DATABASE
+ /END
+ &GRIBIN
+  lbdana = .FALSE.,
+  lana_qi = .TRUE.,
+  llb_qi = .TRUE.,
+  ydirini = './restart/',
+  ydirbd = '/scratch/snx3000/ssilje/RUN_int2lm_ERAI_EUR-44_aerocom/output/',
+  hincbound = 6,
+  lchkini = .TRUE.,
+  lan_t_so0  = .TRUE.,
+  lan_t_snow = .TRUE.,
+  lan_t_cl   = .TRUE.,
+  lan_w_snow = .TRUE.,
+  lan_w_i    = .TRUE.,
+  lan_w_cl   = .TRUE.,
+  lan_vio3   = .TRUE.,
+  lan_hmo3   = .TRUE.,
+  lan_plcov  = .TRUE.,
+  lan_lai    = .TRUE.,
+  lan_rootdp = .TRUE.,
+  ytunitbd='d',
+ /END
+&GRIBOUT
+  hcomb = 43848,87672,3,
+  yvarml = 'CLCT','CLCH','CLCL','CLCM','T_2M'
+  yvarpl = ' ', 
+  yvarzl = ' ',
+  luvmasspoint = .TRUE.,
+  lcheck = .FALSE.,
+  lwrite_const = .FALSE.,
+  ydir = './output/out01/',
+  ytunit = 'd',
+  yform_write = 'ncdf',
+ /END
+ &GRIBOUT
+  hcomb = 43848,87672,24,
+  yvarml='TMAX_2M','TMIN_2M','TOT_PREC','ASOD_T','ASOB_T','ATHB_T','W_SO','ASHFL_S','ALHFL_S','ASOB_S','ATHB_S'
+  yvarpl = ' ', 
+  yvarzl = ' ',
+  luvmasspoint = .TRUE.,
+  lcheck = .FALSE.,
+  lwrite_const = .FALSE.,
+  ydir = './output/out02/',
+  ytunit = 'd',
+  yform_write = 'ncdf',
+ /END
+ 
+ 

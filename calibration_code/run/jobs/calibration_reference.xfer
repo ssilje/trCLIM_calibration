@@ -1,0 +1,37 @@
+#!/bin/csh
+#SBATCH --account=pr04
+#SBATCH --nodes=1
+#SBATCH --partition=xfer
+#SBATCH --time=4:00:00
+#SBATCH --output=log/CCLM_calib_reference_xfer.out
+#SBATCH --error=log/CCLM_calib_reference_xfer.err
+#SBATCH --job-name="calib_reference_xfer"
+
+set save_dir='/project/pr04/ssilje/COSMO-crCLIM_calibration/output'
+set run_dir='/scratch/snx3000/ssilje/COSMO-crCLIM_calibration'
+
+
+if ( ! -d ${save_dir}/reference ) then
+    mkdir ${save_dir}/reference
+endif
+
+if ( -e ${run_dir}/reference/output/reference_out02_2010.tar ) then
+
+    cd $run_dir/reference/output/
+    rsync -auv reference_out01_*.tar ${save_dir}/reference/.
+
+    rsync -auv reference_out02_*.tar ${save_dir}/reference/.
+
+    cd $run_dir/reference/log
+    rsync -auv * ${save_dir}/reference/
+    
+    cd $run_dir/reference/restart
+    rsync -auv * ${save_dir}/reference/
+
+    cd ${run_dir}
+    rm -r reference
+
+    else
+    echo " Missing tar file "
+	sbatch calibration.tar
+ endif

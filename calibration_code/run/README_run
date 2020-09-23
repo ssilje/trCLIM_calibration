@@ -1,0 +1,41 @@
+##############################################################################
+#   This file explains how to set up and run the calibration of the CCLM 5.0 #
+#   Written 4/28/15 by Katie Osterried.                                      #
+#   Edited 2/2/2018 to adapt for the 2018 calibration of COSMO-POMPA         #
+##############################################################################
+
+
+Steps for setting up and running the calibration:
+
+1. First, prepare the INPUT_ORG_reference and INPUT_IO_reference
+   files located in: ~/calibration/input/INPUT_ORG,
+   and ~/calibration/input/INPUT_IO.  
+
+2. Then, change the minima and maxima for the parameters in the generate_input.sh script
+   if needed (found in ~/calibration/input)
+
+3. Clean out the ~/calibration/input/INPUT_ORG, 
+   and ~/calibration/input/INPUT_IO folders.  !! Don't delete the reference files!!
+
+4. Run the generate_input.sh script to make all of the INPUT_ORG, 
+   and INPUT_IO files.
+
+5. Set the run_dir variable in the jobs/job_reference.sh, jobs/prepare_jobs.sh, and 
+   run_calibration.sh script.
+
+6. Clean out anything that is in the $run_dir folder.
+
+7. Change the job_reference.sh script if needed (found in ~/calibration/jobs)
+
+8. Run the prepare_jobs.sh script to generate the run folders and copy the variable
+   input files to the run folders.  
+
+9. Prepare and copy the other INPUT_ files to the $run_dir folder.
+
+10. Copy the cclm executable to the $run_dir folder.  
+
+11. Use the run_calibration.sh script to submit all of the Slurm batch jobs 
+    (found in ~/calibration)  
+
+
+

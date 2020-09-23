@@ -1,0 +1,60 @@
+%  Files for CCLM calibration
+%  The scripts gives an example for the workflow
+%   HISTORY
+%   First version: 11.10.2013
+%   AUTHOR
+%   Omar Bellprat (omar.bellprat@gmail.com)
+%   Katie Osterried
+%   Modified by Silje Lund Soerland, August 2020
+%
+% The repository contains two folders
+%
+% run --> where you set up the simulations to performe the calibration
+% meta_model --> where you run the metamodel (currently a program written in matlab)
+
+
+%% Description of the run-direcotry
+
+First some basic information, so that you  know how the different runs are named:
+The abbreviation for the simulations:
+rlam_heat=‘rl'
+v0snow='v'
+tkhmin='tk'
+uc1='u'
+radfac='ra'
+fac_rootdp2='f'
+l_g='l'
+tur_len='tu'
+
+With "n" after the variable meaning the minimum value and "x" meaning the maximum value.  So for instance, the "tux" run should contain all the tuning variables at their default, except for tur_len, which should have the maximum calibration value.   And "rln_fx" should have the rlam_heat value at minimum value, and the fac_rootdp variable at maximum value. 
+
+Reference value:
+ 
+  tkhmin = 1,
+  tkmmin = 1,
+  v0snow = 20.0,
+  rlam_heat = 1.0,
+  uc1 = 0.8,
+  l_g = 1.59,
+  tur_len= 500.0,
+  fac_rootdp2= 1.0,
+  radfac= 0.6,
+
+# The minimums and maximums of the parameters
+rlam_heatn=0.1
+rlam_heatx=2.0
+v0snown=10.0
+v0snowx=30.0
+tkhminn=0.1
+tkhminx=2.0
+uc1n=0.0
+uc1x=1.6
+radfacn=0.3
+radfacx=0.9
+fac_rootdp2n=0.5
+fac_rootdp2x=1.5
+l_gn=0.25
+l_gx=10
+tur_lenn=60.0
+tur_lenx=1000.0
+

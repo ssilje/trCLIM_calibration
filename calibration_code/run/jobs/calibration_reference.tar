@@ -1,0 +1,28 @@
+#!/bin/csh
+#SBATCH --constraint=gpu
+#SBATCH --account=pr04
+#SBATCH --nodes=1
+#SBATCH --time=4:00:00
+#SBATCH --output=log/CCLM_calib_reference_tar.out
+#SBATCH --error=log/CCLM_calib_reference_tar.err
+#SBATCH --job-name=calib_reference_tar
+
+
+set run_dir='/scratch/snx3000/ssilje/COSMO-crCLIM_calibration'
+cd $run_dir/reference/output/
+set year='2000 2001 2002 2003 2004 2005 2006 2007 2008 2009 2010'
+
+if ( -e ${run_dir}/reference/output/out02/lffd2010010100.nc) then
+
+    foreach f ( ${year} ) 
+	tar -cvf reference_out01_$f.tar $run_dir/reference/output/out01/lffd$f*
+	tar -cvf reference_out02_$f.tar $run_dir/reference/output/out02/lffd$f*
+    end
+    cd $run_dir/reference
+    
+    sbatch calibration.xfer
+
+else
+    echo " missing last file of simulation"
+    sbatch job_restart.sh
+end
